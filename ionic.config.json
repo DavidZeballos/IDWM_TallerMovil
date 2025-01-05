@@ -1,0 +1,7 @@
+{
+  "name": "IDWM_TallerMovil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
