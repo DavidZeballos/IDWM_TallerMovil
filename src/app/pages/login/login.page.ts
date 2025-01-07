@@ -1,26 +1,18 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
   standalone: true,
+  imports: [FormsModule, IonicModule],
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
   email = '';
   password = '';
 
-  constructor(private api: ApiService, private router: Router) {}
-
   login() {
-    this.api.login(this.email, this.password).subscribe({
-      next: (response: any) => {
-        localStorage.setItem('token', response.token);
-        this.router.navigate(['/products']);
-      },
-      error: () => alert('Credenciales inválidas'),
-    });
+    console.log('Login enviado', { email: this.email, password: this.password });
   }
 }

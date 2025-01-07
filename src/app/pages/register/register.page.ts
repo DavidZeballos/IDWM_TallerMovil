@@ -1,20 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [FormsModule, CommonModule], // Habilita [(ngModel)] y *ngFor
+  templateUrl: './register.page.html',
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
+  user: Record<string, string> = {
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    rut: '',
+    dateOfBirth: '',
+    gender: '',
+  };
 
-  constructor() { }
+  fields: (keyof typeof this.user)[] = [
+    'userName',
+    'email',
+    'password',
+    'confirmPassword',
+    'rut',
+    'dateOfBirth',
+    'gender',
+  ];
 
-  ngOnInit() {
+  register() {
+    console.log('Registro enviado', this.user);
   }
-
 }

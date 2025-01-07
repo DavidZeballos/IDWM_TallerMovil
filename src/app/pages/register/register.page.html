@@ -1,86 +1,21 @@
-<div class="flex items-center justify-center h-screen bg-light">
-  <div class="w-full max-w-lg bg-white rounded-lg shadow-md p-6">
-    <h2 class="text-2xl font-bold text-center text-primary mb-6">Registrar Usuario</h2>
-    <form>
-      <div class="mb-4">
-        <label for="userName" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+    <h1 class="text-2xl font-semibold text-center mb-4">Registro</h1>
+    <form (ngSubmit)="register()" class="space-y-4">
+      <div *ngFor="let field of ['userName', 'email', 'password', 'confirmPassword', 'rut', 'dateOfBirth', 'gender']">
+        <label class="block text-gray-700 capitalize">{{ field }}</label>
         <input
-          id="userName"
-          type="text"
-          [(ngModel)]="user.userName"
-          name="userName"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
+          [(ngModel)]="user[field]"
+          [type]="field.includes('password') ? 'password' : 'text'"
+          [name]="field"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring"
         />
-      </div>
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700">Correo</label>
-        <input
-          id="email"
-          type="email"
-          [(ngModel)]="user.email"
-          name="email"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
-        <input
-          id="password"
-          type="password"
-          [(ngModel)]="user.password"
-          name="password"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
-        <input
-          id="confirmPassword"
-          type="password"
-          [(ngModel)]="user.confirmPassword"
-          name="confirmPassword"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="rut" class="block text-sm font-medium text-gray-700">RUT</label>
-        <input
-          id="rut"
-          type="text"
-          [(ngModel)]="user.rut"
-          name="rut"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="dateOfBirth" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
-        <input
-          id="dateOfBirth"
-          type="date"
-          [(ngModel)]="user.dateOfBirth"
-          name="dateOfBirth"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        />
-      </div>
-      <div class="mb-4">
-        <label for="gender" class="block text-sm font-medium text-gray-700">Género</label>
-        <select
-          id="gender"
-          [(ngModel)]="user.gender"
-          name="gender"
-          class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary"
-        >
-          <option value="Masculino">Masculino</option>
-          <option value="Femenino">Femenino</option>
-          <option value="Otro">Otro</option>
-        </select>
       </div>
       <button
-        type="button"
-        (click)="register()"
-        class="w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-dark transition"
+        type="submit"
+        class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
       >
-        Registrar
+        Registrarse
       </button>
     </form>
   </div>
